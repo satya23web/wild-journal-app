@@ -7,7 +7,7 @@ from datetime import datetime
 
 # --- CONFIGURATION ---
 # WARNING: This is not secure. Do not share this code with your key in it.
-GEMINI_API_KEY = "AIzaSyAPJHedc1iBovTjXr0qPm3hu6OXMJxfBYY"
+GEMINI_API_KEY = "AIzaSyAJI3WpL5d4SQWYU7_6JCGIhQRf7HjqSmk"
 
 try:
     genai.configure(api_key=GEMINI_API_KEY)
