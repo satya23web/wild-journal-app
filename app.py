@@ -22,7 +22,7 @@ def get_gemini_response(image_bytes, prompt):
     """
     try:
         pil_image = Image.open(io.BytesIO(image_bytes))
-        model = genai.GenerativeModel('gemini-1.5-flash-latest')
+        model = genai.GenerativeModel('gemini-2.0-flash')
         response = model.generate_content([prompt, pil_image])
         return response.text
     except Exception as e:
