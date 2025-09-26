@@ -56,8 +56,33 @@ if uploaded_file is not None:
         image.save(img_byte_arr, format=image.format or 'JPEG')
         image_bytes = img_byte_arr.getvalue()
 
-        prompt = "This is a photo taken in Australia. Identify the main animal or plant in this image and provide a short, one-paragraph description suitable for a nature journal."
+        prompt = "prompt = """
+You are an expert Australian wildlife biologist with a talent for writing engaging journal entries. Analyze the provided photograph, which was taken in Australia.
 
+Please provide a detailed report using the following markdown structure:
+
+### [Common Name]
+*(Scientific Name)*
+
+**Physical Characteristics:**
+* **Size:** [Provide its typical height/length and weight.]
+* **Appearance:** [Describe its key colors, markings, and other distinguishing features.]
+
+**Behavior & Diet:**
+* **Behavior:** [Is it nocturnal? Solitary or social? Mention any unique behaviors.]
+* **Diet:** [What does it primarily eat?]
+
+**Habitat:**
+* [Describe its natural environment and where it's typically found in Australia.]
+
+**Conservation Status:**
+* [Provide its status, for example: Native to Australia, Common, Endangered, etc.]
+
+**Journalist's Note:**
+* [Write one fascinating fact or a short, engaging summary perfect for a nature journal entry.]
+
+If the image is unclear, contains no identifiable wildlife, or features a non-native domestic animal (like a cat or dog), please state that clearly instead of providing the structured report.
+""""
         with st.spinner("Let's see what it is... 🧐"):
             # Store the response in session state
             st.session_state.gemini_response = get_gemini_response(image_bytes, prompt)
